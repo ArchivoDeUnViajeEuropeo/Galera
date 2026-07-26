@@ -59,22 +59,16 @@ export default function TangibleSection() {
     setDownloading(true);
     try {
       const res = await base44.functions.invoke("getAlbumPdf", {});
-      const data = res.data;
-      if (!data || !data.base64) throw new Error("No se pudo obtener el PDF");
-      const byteChars = atob(data.base64);
-      const byteNumbers = new Uint8Array(byteChars.length);
-      for (let i = 0; i < byteChars.length; i++) {
-        byteNumbers[i] = byteChars.charCodeAt(i);
-      }
-      const blob = new Blob([byteNumbers], { type: "application/pdf" });
-      const url = URL.createObjectURL(blob);
+      const url = res.data?.url;
+      if (!url) throw new Error("No se pudo obtener el PDF");
       const a = document.createElement("a");
       a.href = url;
-      a.download = data.fileName || "El archivo de un viaje europeo.pdf";
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.download = "El archivo de un viaje europeo.pdf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     } catch (e) {
       console.error(e);
     } finally {
