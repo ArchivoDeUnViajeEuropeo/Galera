@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 11% 94%;
+    --foreground: 0 0% 10%;
+    --card: 40 11% 94%;
+    --card-foreground: 0 0% 10%;
+    --popover: 40 11% 94%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 40 11% 94%;
+    --secondary: 37 7% 88%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 37 7% 88%;
+    --muted-foreground: 34 7% 51%;
+    --accent: 37 7% 88%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 34 7% 51%;
+    --input: 37 7% 88%;
+    --ring: 0 0% 10%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.25rem;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, monospace;
+    --sidebar-background: 40 11% 94%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 40 11% 94%;
+    --sidebar-accent: 37 7% 88%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 34 7% 51%;
+    --sidebar-ring: 0 0% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-color: #F2F1ED;
+    color: #1A1A1A;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #8C867A;
+  border-radius: 2px;
+}
+
+/* Horizontal scroll filmstrip */
+.filmstrip-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #8C867A transparent;
+}
+.filmstrip-scroll::-webkit-scrollbar {
+  height: 2px;
+}
+.filmstrip-scroll::-webkit-scrollbar-thumb {
+  background: #8C867A;
+}
+
+/* Infinite horizontal scroll for large carousel */
+@keyframes scrollLeftLarge {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.scroll-left-large {
+  animation: scrollLeftLarge 200s linear infinite;
+}
+.scroll-left-large.paused {
+  animation-play-state: paused;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #E0DED7 25%, #F2F1ED 50%, #E0DED7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Fan-out animation for PDF pages */
+@keyframes fanOut1 {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(-6deg) translateY(-8px); }
+}
+@keyframes fanOut2 {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(-3deg) translateY(-4px); }
+}
+@keyframes fanOut3 {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(3deg) translateY(-4px); }
+}
+@keyframes fanOut4 {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(6deg) translateY(-8px); }
+}
